@@ -1,5 +1,5 @@
 import { memo } from "react";
-import type { CardView, Rank, Suit } from "@/lib/types";
+import type { CardView, Suit } from "@/lib/types";
 import { cn } from "@/lib/cn";
 
 const SUIT_GLYPH: Record<Suit, string> = {
@@ -86,7 +86,3 @@ function PlayingCardImpl({ card, matched, pending, disabled, onClick, ariaLabel 
 }
 
 export const PlayingCard = memo(PlayingCardImpl);
-
-export function rankLabel(rank: Rank | null): string {
-  return rank ?? "?";
-}
