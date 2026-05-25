@@ -27,8 +27,7 @@
   --color-suit-clubs-bg: hsl(150 65% 94%);
   --color-suit-spades: hsl(258 50% 42%);
   --color-suit-spades-bg: hsl(260 65% 95%);
-  --color-card-back: hsl(260 80% 90%);
-  --color-card-back-to: hsl(335 80% 92%);
+  --color-card-back: hsl(270 60% 86%);
 
   --radius: 0.75rem;
 }
@@ -59,8 +58,7 @@
     --color-suit-clubs-bg: hsl(155 30% 18%);
     --color-suit-spades: hsl(258 55% 75%);
     --color-suit-spades-bg: hsl(258 30% 22%);
-    --color-card-back: hsl(258 35% 28%);
-    --color-card-back-to: hsl(335 35% 28%);
+    --color-card-back: hsl(270 30% 32%);
   }
 }
 

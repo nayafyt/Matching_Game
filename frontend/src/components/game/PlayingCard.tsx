@@ -48,7 +48,7 @@ function PlayingCardImpl({ card, matched, pending, disabled, onClick, ariaLabel 
         <div
           className={cn(
             "card-face absolute inset-0 rounded-xl border border-border shadow-sm",
-            "bg-gradient-to-br from-card-back to-card-back-to",
+            "bg-card-back",
             "flex items-center justify-center",
             !disabled && "transition-transform group-hover:scale-[1.02] group-active:scale-95",
             pending && "ring-2 ring-ring",
