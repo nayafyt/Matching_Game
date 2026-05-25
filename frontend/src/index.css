@@ -1,47 +1,66 @@
 @import "tailwindcss";
 
 @theme {
-  --color-background: hsl(0 0% 100%);
-  --color-foreground: hsl(222 47% 11%);
-  --color-muted: hsl(210 40% 96%);
-  --color-muted-foreground: hsl(215 16% 47%);
-  --color-card: hsl(0 0% 100%);
-  --color-card-foreground: hsl(222 47% 11%);
-  --color-border: hsl(214 32% 91%);
-  --color-input: hsl(214 32% 91%);
-  --color-primary: hsl(222 47% 11%);
-  --color-primary-foreground: hsl(210 40% 98%);
-  --color-secondary: hsl(210 40% 96%);
-  --color-secondary-foreground: hsl(222 47% 11%);
-  --color-accent: hsl(210 40% 96%);
-  --color-accent-foreground: hsl(222 47% 11%);
-  --color-destructive: hsl(0 84% 60%);
-  --color-success: hsl(142 70% 45%);
-  --color-suit-red: hsl(0 70% 50%);
-  --color-suit-black: hsl(222 47% 11%);
-  --color-ring: hsl(222 47% 11%);
+  --color-background: hsl(30 50% 98%);
+  --color-foreground: hsl(255 25% 22%);
+  --color-muted: hsl(280 30% 96%);
+  --color-muted-foreground: hsl(255 15% 50%);
+  --color-card: hsl(40 60% 99%);
+  --color-card-foreground: hsl(255 25% 22%);
+  --color-border: hsl(280 25% 90%);
+  --color-input: hsl(280 25% 90%);
+  --color-primary: hsl(255 35% 45%);
+  --color-primary-foreground: hsl(40 60% 99%);
+  --color-secondary: hsl(280 40% 94%);
+  --color-secondary-foreground: hsl(255 35% 35%);
+  --color-accent: hsl(280 40% 94%);
+  --color-accent-foreground: hsl(255 35% 35%);
+  --color-destructive: hsl(0 70% 65%);
+  --color-success: hsl(155 50% 50%);
+  --color-ring: hsl(255 45% 65%);
+
+  --color-suit-hearts: hsl(345 70% 50%);
+  --color-suit-hearts-bg: hsl(350 100% 96%);
+  --color-suit-diamonds: hsl(15 80% 50%);
+  --color-suit-diamonds-bg: hsl(25 100% 95%);
+  --color-suit-clubs: hsl(160 55% 32%);
+  --color-suit-clubs-bg: hsl(150 65% 94%);
+  --color-suit-spades: hsl(258 50% 42%);
+  --color-suit-spades-bg: hsl(260 65% 95%);
+  --color-card-back: hsl(260 80% 90%);
+  --color-card-back-to: hsl(335 80% 92%);
 
   --radius: 0.75rem;
 }
 
 @media (prefers-color-scheme: dark) {
   @theme {
-    --color-background: hsl(222 47% 6%);
-    --color-foreground: hsl(210 40% 98%);
-    --color-muted: hsl(217 33% 17%);
-    --color-muted-foreground: hsl(215 20% 65%);
-    --color-card: hsl(222 47% 9%);
-    --color-card-foreground: hsl(210 40% 98%);
-    --color-border: hsl(217 33% 17%);
-    --color-input: hsl(217 33% 17%);
-    --color-primary: hsl(210 40% 98%);
-    --color-primary-foreground: hsl(222 47% 11%);
-    --color-secondary: hsl(217 33% 17%);
-    --color-secondary-foreground: hsl(210 40% 98%);
-    --color-accent: hsl(217 33% 17%);
-    --color-accent-foreground: hsl(210 40% 98%);
-    --color-suit-red: hsl(0 75% 65%);
-    --color-suit-black: hsl(210 40% 95%);
+    --color-background: hsl(255 20% 10%);
+    --color-foreground: hsl(280 25% 95%);
+    --color-muted: hsl(255 15% 18%);
+    --color-muted-foreground: hsl(280 15% 65%);
+    --color-card: hsl(255 18% 14%);
+    --color-card-foreground: hsl(280 25% 95%);
+    --color-border: hsl(255 15% 22%);
+    --color-input: hsl(255 15% 22%);
+    --color-primary: hsl(280 50% 75%);
+    --color-primary-foreground: hsl(255 20% 10%);
+    --color-secondary: hsl(255 15% 22%);
+    --color-secondary-foreground: hsl(280 25% 95%);
+    --color-accent: hsl(255 15% 22%);
+    --color-accent-foreground: hsl(280 25% 95%);
+    --color-ring: hsl(280 50% 75%);
+
+    --color-suit-hearts: hsl(345 75% 75%);
+    --color-suit-hearts-bg: hsl(345 35% 22%);
+    --color-suit-diamonds: hsl(20 80% 72%);
+    --color-suit-diamonds-bg: hsl(20 35% 22%);
+    --color-suit-clubs: hsl(155 55% 65%);
+    --color-suit-clubs-bg: hsl(155 30% 18%);
+    --color-suit-spades: hsl(258 55% 75%);
+    --color-suit-spades-bg: hsl(258 30% 22%);
+    --color-card-back: hsl(258 35% 28%);
+    --color-card-back-to: hsl(335 35% 28%);
   }
 }
 

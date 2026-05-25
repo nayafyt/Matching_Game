@@ -9,7 +9,12 @@ const SUIT_GLYPH: Record<Suit, string> = {
   S: "♠",
 };
 
-const RED_SUITS = new Set<Suit>(["H", "D"]);
+const SUIT_THEME: Record<Suit, { surface: string; fg: string }> = {
+  H: { surface: "bg-suit-hearts-bg", fg: "text-suit-hearts" },
+  D: { surface: "bg-suit-diamonds-bg", fg: "text-suit-diamonds" },
+  C: { surface: "bg-suit-clubs-bg", fg: "text-suit-clubs" },
+  S: { surface: "bg-suit-spades-bg", fg: "text-suit-spades" },
+};
 
 interface Props {
   card: CardView;
@@ -22,8 +27,8 @@ interface Props {
 
 function PlayingCardImpl({ card, matched, pending, disabled, onClick, ariaLabel }: Props) {
   const flipped = card.face_up;
-  const suitColor =
-    card.suit && RED_SUITS.has(card.suit) ? "text-suit-red" : "text-suit-black";
+  const theme = card.suit ? SUIT_THEME[card.suit] : null;
+  const glyph = card.suit ? SUIT_GLYPH[card.suit] : "";
 
   return (
     <button
@@ -38,23 +43,18 @@ function PlayingCardImpl({ card, matched, pending, disabled, onClick, ariaLabel 
         disabled && !flipped && "cursor-not-allowed",
       )}
     >
-      <div
-        className={cn(
-          "card-3d relative h-full w-full",
-          flipped && "card-flipped",
-        )}
-      >
+      <div className={cn("card-3d relative h-full w-full", flipped && "card-flipped")}>
         {/* Back face */}
         <div
           className={cn(
-            "card-face absolute inset-0 rounded-xl border border-border",
-            "bg-gradient-to-br from-primary to-primary/80",
+            "card-face absolute inset-0 rounded-xl border border-border shadow-sm",
+            "bg-gradient-to-br from-card-back to-card-back-to",
             "flex items-center justify-center",
             !disabled && "transition-transform group-hover:scale-[1.02] group-active:scale-95",
             pending && "ring-2 ring-ring",
           )}
         >
-          <div className="text-primary-foreground/80 text-2xl font-black tracking-tighter">
+          <div className="text-foreground/40 text-3xl font-black tracking-tighter select-none">
             ♠♥
           </div>
         </div>
@@ -62,22 +62,42 @@ function PlayingCardImpl({ card, matched, pending, disabled, onClick, ariaLabel 
         {/* Front face */}
         <div
           className={cn(
-            "card-face card-face-back absolute inset-0 rounded-xl border border-border bg-card",
-            "p-2 flex flex-col justify-between shadow-sm",
+            "card-face card-face-back absolute inset-0 rounded-xl border border-border shadow-sm",
+            theme?.surface ?? "bg-card",
             matched && "ring-2 ring-success/60",
             pending && !matched && "ring-2 ring-ring",
           )}
         >
-          <div className={cn("text-left text-sm sm:text-base font-bold leading-none", suitColor)}>
-            <div>{card.rank}</div>
-            <div className="text-base sm:text-lg">{card.suit ? SUIT_GLYPH[card.suit] : ""}</div>
+          {/* Top-left corner */}
+          <div
+            className={cn(
+              "absolute top-1.5 left-2 flex flex-col items-center leading-none font-bold tabular-nums select-none",
+              theme?.fg,
+            )}
+          >
+            <span className="text-sm sm:text-base">{card.rank}</span>
+            <span className="text-xs sm:text-sm">{glyph}</span>
           </div>
-          <div className={cn("self-center text-2xl sm:text-4xl", suitColor)}>
-            {card.suit ? SUIT_GLYPH[card.suit] : ""}
+
+          {/* Centered glyph */}
+          <div
+            className={cn(
+              "absolute inset-0 flex items-center justify-center text-3xl sm:text-5xl select-none",
+              theme?.fg,
+            )}
+          >
+            {glyph}
           </div>
-          <div className={cn("text-right text-sm sm:text-base font-bold leading-none rotate-180", suitColor)}>
-            <div>{card.rank}</div>
-            <div className="text-base sm:text-lg">{card.suit ? SUIT_GLYPH[card.suit] : ""}</div>
+
+          {/* Bottom-right corner (rotated) */}
+          <div
+            className={cn(
+              "absolute bottom-1.5 right-2 flex flex-col items-center leading-none font-bold tabular-nums select-none rotate-180",
+              theme?.fg,
+            )}
+          >
+            <span className="text-sm sm:text-base">{card.rank}</span>
+            <span className="text-xs sm:text-sm">{glyph}</span>
           </div>
         </div>
       </div>
