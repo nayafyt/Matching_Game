@@ -1,6 +1,7 @@
 import random
+from collections import Counter
 
-from app.game.deck import Card, Difficulty, Rank, Suit, build_deck, shuffled_deck
+from app.game.deck import Difficulty, Rank, build_deck, shuffled_deck
 
 
 def test_easy_deck_has_16_cards():
@@ -17,9 +18,9 @@ def test_hard_deck_has_52_cards():
     assert len(build_deck(Difficulty.HARD)) == 52
 
 
-def test_card_id_combines_rank_and_suit():
-    assert Card(Rank.ACE, Suit.SPADES).id == "AS"
-    assert Card(Rank.TEN, Suit.HEARTS).id == "10H"
+def test_every_card_appears_exactly_twice():
+    counts = Counter(build_deck(Difficulty.HARD))
+    assert set(counts.values()) == {2}
 
 
 def test_shuffled_deck_is_deterministic_with_seeded_rng():
@@ -31,4 +32,4 @@ def test_shuffled_deck_is_deterministic_with_seeded_rng():
 def test_shuffle_preserves_all_cards():
     rng = random.Random(0)
     shuffled = shuffled_deck(Difficulty.HARD, rng=rng)
-    assert sorted(c.id for c in shuffled) == sorted(c.id for c in build_deck(Difficulty.HARD))
+    assert Counter(shuffled) == Counter(build_deck(Difficulty.HARD))

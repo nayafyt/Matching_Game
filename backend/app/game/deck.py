@@ -54,21 +54,20 @@ _SUITS_IN_PLAY: tuple[Suit, ...] = (Suit.HEARTS, Suit.SPADES)
 BOARD_ROWS = 4
 
 
+_COPIES_PER_CARD = 2
+
+
 @dataclass(frozen=True, slots=True)
 class Card:
     rank: Rank
     suit: Suit
-
-    @property
-    def id(self) -> str:
-        return f"{self.rank.value}{self.suit.value}"
 
 
 def build_deck(difficulty: Difficulty) -> list[Card]:
     """Two copies of each (rank, suit) so every card has a matching twin."""
     ranks = _RANKS_BY_DIFFICULTY[difficulty]
     unique = [Card(rank, suit) for rank in ranks for suit in _SUITS_IN_PLAY]
-    return unique + unique
+    return unique * _COPIES_PER_CARD
 
 
 def shuffled_deck(difficulty: Difficulty, rng: random.Random | None = None) -> list[Card]:
@@ -80,5 +79,5 @@ def shuffled_deck(difficulty: Difficulty, rng: random.Random | None = None) -> l
 
 def board_dimensions(difficulty: Difficulty) -> tuple[int, int]:
     """Return (rows, cols) for the board at this difficulty."""
-    size = len(build_deck(difficulty))
+    size = len(_RANKS_BY_DIFFICULTY[difficulty]) * len(_SUITS_IN_PLAY) * _COPIES_PER_CARD
     return BOARD_ROWS, size // BOARD_ROWS
