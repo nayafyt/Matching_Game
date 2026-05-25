@@ -47,6 +47,10 @@ _RANKS_BY_DIFFICULTY: dict[Difficulty, tuple[Rank, ...]] = {
     Difficulty.HARD: _HARD_RANKS,
 }
 
+# Two suits per difficulty so that doubling every (rank, suit) keeps the
+# classic 16 / 40 / 52 board sizes while giving each card a literal twin.
+_SUITS_IN_PLAY: tuple[Suit, ...] = (Suit.HEARTS, Suit.SPADES)
+
 BOARD_ROWS = 4
 
 
@@ -61,9 +65,10 @@ class Card:
 
 
 def build_deck(difficulty: Difficulty) -> list[Card]:
-    """Build the deck for a given difficulty. Ordered by rank then suit."""
+    """Two copies of each (rank, suit) so every card has a matching twin."""
     ranks = _RANKS_BY_DIFFICULTY[difficulty]
-    return [Card(rank, suit) for rank in ranks for suit in Suit]
+    unique = [Card(rank, suit) for rank in ranks for suit in _SUITS_IN_PLAY]
+    return unique + unique
 
 
 def shuffled_deck(difficulty: Difficulty, rng: random.Random | None = None) -> list[Card]:

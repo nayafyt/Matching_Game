@@ -12,8 +12,8 @@ _ACE_POINTS = 1
 
 
 def match_points(a: Card, b: Card) -> int:
-    """Points awarded when two flipped cards have the same rank. 0 otherwise."""
-    if a.rank != b.rank:
+    """Points awarded when two flipped cards share both rank and suit. 0 otherwise."""
+    if a.rank != b.rank or a.suit != b.suit:
         return 0
     if a.rank == Rank.ACE:
         return _ACE_POINTS

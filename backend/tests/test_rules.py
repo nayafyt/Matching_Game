@@ -6,22 +6,27 @@ def c(rank: Rank, suit: Suit = Suit.SPADES) -> Card:
     return Card(rank, suit)
 
 
-def test_number_pair_awards_face_value():
-    assert match_points(c(Rank.TWO, Suit.HEARTS), c(Rank.TWO, Suit.SPADES)) == 2
-    assert match_points(c(Rank.SEVEN, Suit.HEARTS), c(Rank.SEVEN, Suit.CLUBS)) == 7
+def test_identical_number_pair_awards_face_value():
+    assert match_points(c(Rank.TWO, Suit.HEARTS), c(Rank.TWO, Suit.HEARTS)) == 2
+    assert match_points(c(Rank.SEVEN, Suit.SPADES), c(Rank.SEVEN, Suit.SPADES)) == 7
 
 
-def test_ten_pair_awards_10():
-    assert match_points(c(Rank.TEN, Suit.HEARTS), c(Rank.TEN, Suit.SPADES)) == 10
+def test_identical_ten_pair_awards_10():
+    assert match_points(c(Rank.TEN, Suit.HEARTS), c(Rank.TEN, Suit.HEARTS)) == 10
 
 
-def test_ace_pair_awards_1():
-    assert match_points(c(Rank.ACE, Suit.HEARTS), c(Rank.ACE, Suit.SPADES)) == 1
+def test_identical_ace_pair_awards_1():
+    assert match_points(c(Rank.ACE, Suit.SPADES), c(Rank.ACE, Suit.SPADES)) == 1
 
 
-def test_face_pair_awards_10():
+def test_identical_face_pair_awards_10():
     for r in (Rank.JACK, Rank.QUEEN, Rank.KING):
-        assert match_points(c(r, Suit.HEARTS), c(r, Suit.SPADES)) == 10
+        assert match_points(c(r, Suit.HEARTS), c(r, Suit.HEARTS)) == 10
+
+
+def test_same_rank_different_suit_no_match():
+    assert match_points(c(Rank.FIVE, Suit.HEARTS), c(Rank.FIVE, Suit.SPADES)) == 0
+    assert match_points(c(Rank.KING, Suit.HEARTS), c(Rank.KING, Suit.CLUBS)) == 0
 
 
 def test_non_matching_ranks_score_zero():

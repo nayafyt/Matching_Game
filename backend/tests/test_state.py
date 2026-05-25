@@ -28,7 +28,7 @@ def test_new_game_rejects_too_few_players():
 
 
 def test_simple_match_awards_points_and_advances_turn():
-    deck = [Card(Rank.FIVE, Suit.HEARTS), Card(Rank.FIVE, Suit.SPADES)] + [
+    deck = [Card(Rank.FIVE, Suit.HEARTS), Card(Rank.FIVE, Suit.HEARTS)] + [
         Card(Rank.TWO, Suit.HEARTS)
     ] * 14
     g = _state_with_deck(deck, players=2)
@@ -41,6 +41,19 @@ def test_simple_match_awards_points_and_advances_turn():
     assert g.scores == [5, 0]
     assert g.current_player == 2
     assert g.matched[0] and g.matched[1]
+
+
+def test_same_rank_different_suit_is_a_miss():
+    deck = [Card(Rank.FIVE, Suit.HEARTS), Card(Rank.FIVE, Suit.SPADES)] + [
+        Card(Rank.TWO, Suit.HEARTS)
+    ] * 14
+    g = _state_with_deck(deck, players=2)
+    g.flip(0)
+    g.flip(1)
+    result = g.resolve()
+    assert result.outcome == Outcome.MISS
+    assert g.scores == [0, 0]
+    assert not g.matched[0] and not g.matched[1]
 
 
 def test_miss_keeps_score_and_advances_turn():
@@ -59,7 +72,7 @@ def test_miss_keeps_score_and_advances_turn():
 
 
 def test_jack_match_grants_bonus_turn():
-    deck = [Card(Rank.JACK, Suit.HEARTS), Card(Rank.JACK, Suit.SPADES)] + [
+    deck = [Card(Rank.JACK, Suit.HEARTS), Card(Rank.JACK, Suit.HEARTS)] + [
         Card(Rank.TWO, Suit.HEARTS)
     ] * 14
     g = _state_with_deck(deck, players=3)
@@ -71,7 +84,7 @@ def test_jack_match_grants_bonus_turn():
 
 
 def test_king_match_skips_next_player():
-    deck = [Card(Rank.KING, Suit.HEARTS), Card(Rank.KING, Suit.SPADES)] + [
+    deck = [Card(Rank.KING, Suit.HEARTS), Card(Rank.KING, Suit.HEARTS)] + [
         Card(Rank.TWO, Suit.HEARTS)
     ] * 14
     g = _state_with_deck(deck, players=3)
@@ -135,7 +148,7 @@ def test_cannot_flip_after_reveal_without_resolving():
 
 
 def test_game_finishes_when_all_matched():
-    deck = [Card(Rank.FIVE, Suit.HEARTS), Card(Rank.FIVE, Suit.SPADES)]
+    deck = [Card(Rank.FIVE, Suit.HEARTS), Card(Rank.FIVE, Suit.HEARTS)]
     g = _state_with_deck(deck, players=2)
     g.flip(0)
     g.flip(1)
