@@ -3,6 +3,7 @@ import { useGame } from "@/hooks/useGame";
 import { Board } from "@/components/game/Board";
 import { GameOver } from "@/components/game/GameOver";
 import { GameSetup } from "@/components/game/GameSetup";
+import { HelpButton } from "@/components/game/HelpButton";
 import { LanguageToggle } from "@/components/game/LanguageToggle";
 import { Scoreboard } from "@/components/game/Scoreboard";
 import { TurnBanner } from "@/components/game/TurnBanner";
@@ -24,6 +25,7 @@ export default function App() {
               </Button>
             )}
             <LanguageToggle />
+            <HelpButton />
           </div>
         </div>
       </header>

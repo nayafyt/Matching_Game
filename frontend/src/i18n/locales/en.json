@@ -38,6 +38,19 @@
     "playAgain": "Play again"
   },
   "language": "Language",
+  "help": {
+    "open": "How to play",
+    "close": "Close",
+    "title": "How to play",
+    "matchTitle": "Matching",
+    "matchBody": "Flip two cards on your turn. They match only when both the rank and the suit are identical (e.g. 5♥ + 5♥). Every card in the deck appears twice — find the twin. Matched cards stay face-up.",
+    "scoringTitle": "Scoring",
+    "scoringBody": "Number cards (2–10): face value. Aces: 1 point. Jacks, Queens, Kings: 10 points each.",
+    "specialTitle": "Special pairs",
+    "specialBody": "Two Jacks → bonus turn. Two Kings → next player loses a turn. King + Queen → flip a third card; if it's also K or Q, score 10.",
+    "endTitle": "Winning",
+    "endBody": "The game ends when every card is matched. Highest score wins; ties are possible."
+  },
   "errors": {
     "network": "Cannot reach the server. Is the backend running?",
     "invalidMove": "That move isn't allowed right now."
