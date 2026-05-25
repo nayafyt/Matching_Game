@@ -1,0 +1,46 @@
+{
+  "title": "Matching Game",
+  "subtitle": "Flip cards in pairs. Match ranks to score points.",
+  "setup": {
+    "players": "Players",
+    "difficulty": "Difficulty",
+    "easy": "Easy (16 cards)",
+    "medium": "Medium (40 cards)",
+    "hard": "Hard (52 cards)",
+    "start": "Start game",
+    "starting": "Starting…"
+  },
+  "hud": {
+    "player": "Player {{n}}",
+    "turn": "Player {{n}}'s turn",
+    "phase": {
+      "awaiting_first": "Flip your first card",
+      "awaiting_second": "Flip your second card",
+      "reveal_pair": "Revealing…",
+      "awaiting_third": "K + Q! Flip a third card to try for a triple",
+      "reveal_triple": "Revealing triple…",
+      "finished": "Game over"
+    },
+    "score": "Score",
+    "scoreboard": "Scoreboard",
+    "newGame": "New game"
+  },
+  "outcome": {
+    "match": "Match! +{{points}}",
+    "miss": "No match",
+    "bonus_turn": "Jack pair! +{{points}} — play again",
+    "skip_next": "King pair! +{{points}} — next player skipped",
+    "triple_match": "Triple! +{{points}}",
+    "triple_miss": "No triple"
+  },
+  "finished": {
+    "winner": "Player {{n}} wins with {{points}} points",
+    "tie": "Tie between players {{players}} at {{points}} points",
+    "playAgain": "Play again"
+  },
+  "language": "Language",
+  "errors": {
+    "network": "Cannot reach the server. Is the backend running?",
+    "invalidMove": "That move isn't allowed right now."
+  }
+}
