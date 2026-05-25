@@ -42,7 +42,7 @@ export function PlayingCard({ card, matched, pending, disabled, onClick, ariaLab
         disabled && !flipped && "cursor-not-allowed",
       )}
     >
-      <div className={cn("card-3d relative h-full w-full", flipped && "card-flipped")}>
+      <div className={cn("card-3d relative h-full w-full @container", flipped && "card-flipped")}>
         {/* Back face */}
         <div
           className={cn(
@@ -53,7 +53,7 @@ export function PlayingCard({ card, matched, pending, disabled, onClick, ariaLab
             pending && "ring-2 ring-ring",
           )}
         >
-          <div className="text-foreground/40 text-3xl font-black tracking-tighter select-none">
+          <div className="text-foreground/40 font-black tracking-tighter select-none text-[clamp(1rem,20cqw,1.6rem)]">
             ♠♥
           </div>
         </div>
@@ -70,18 +70,18 @@ export function PlayingCard({ card, matched, pending, disabled, onClick, ariaLab
           {/* Top-left corner */}
           <div
             className={cn(
-              "absolute top-1.5 left-2 flex flex-col items-center leading-none font-bold tabular-nums select-none",
+              "absolute top-[6%] left-[8%] flex flex-col items-center leading-none font-bold tabular-nums select-none",
               theme?.fg,
             )}
           >
-            <span className="text-sm sm:text-base">{card.rank}</span>
-            <span className="text-xs sm:text-sm">{glyph}</span>
+            <span className="text-[clamp(0.75rem,13cqw,1rem)]">{card.rank}</span>
+            <span className="text-[clamp(0.65rem,11cqw,0.85rem)]">{glyph}</span>
           </div>
 
           {/* Centered glyph */}
           <div
             className={cn(
-              "absolute inset-0 flex items-center justify-center text-3xl sm:text-5xl select-none",
+              "absolute inset-0 flex items-center justify-center select-none text-[clamp(1.4rem,26cqw,2rem)]",
               theme?.fg,
             )}
           >
@@ -91,12 +91,12 @@ export function PlayingCard({ card, matched, pending, disabled, onClick, ariaLab
           {/* Bottom-right corner (rotated) */}
           <div
             className={cn(
-              "absolute bottom-1.5 right-2 flex flex-col items-center leading-none font-bold tabular-nums select-none rotate-180",
+              "absolute bottom-[6%] right-[8%] flex flex-col items-center leading-none font-bold tabular-nums select-none rotate-180",
               theme?.fg,
             )}
           >
-            <span className="text-sm sm:text-base">{card.rank}</span>
-            <span className="text-xs sm:text-sm">{glyph}</span>
+            <span className="text-[clamp(0.75rem,13cqw,1rem)]">{card.rank}</span>
+            <span className="text-[clamp(0.65rem,11cqw,0.85rem)]">{glyph}</span>
           </div>
         </div>
       </div>
