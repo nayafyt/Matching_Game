@@ -1,4 +1,3 @@
-import { memo } from "react";
 import type { CardView, Suit } from "@/lib/types";
 import { cn } from "@/lib/cn";
 
@@ -25,7 +24,7 @@ interface Props {
   ariaLabel: string;
 }
 
-function PlayingCardImpl({ card, matched, pending, disabled, onClick, ariaLabel }: Props) {
+export function PlayingCard({ card, matched, pending, disabled, onClick, ariaLabel }: Props) {
   const flipped = card.face_up;
   const theme = card.suit ? SUIT_THEME[card.suit] : null;
   const glyph = card.suit ? SUIT_GLYPH[card.suit] : "";
@@ -104,5 +103,3 @@ function PlayingCardImpl({ card, matched, pending, disabled, onClick, ariaLabel 
     </button>
   );
 }
-
-export const PlayingCard = memo(PlayingCardImpl);

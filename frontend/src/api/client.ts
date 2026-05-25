@@ -27,9 +27,6 @@ export const api = {
       body: JSON.stringify({ difficulty, num_players: numPlayers }),
     });
   },
-  getGame(id: string): Promise<GameView> {
-    return request<GameView>(`/api/games/${id}`);
-  },
   flip(id: string, position: number): Promise<GameView> {
     return request<GameView>(`/api/games/${id}/flip`, {
       method: "POST",
