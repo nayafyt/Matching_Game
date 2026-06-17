@@ -53,7 +53,7 @@ export function PlayingCard({ card, matched, pending, disabled, onClick, ariaLab
             pending && "ring-2 ring-ring",
           )}
         >
-          <div className="text-foreground/40 font-black tracking-tighter select-none text-[clamp(1rem,20cqw,1.6rem)]">
+          <div className="text-foreground/40 font-black tracking-tighter select-none text-[max(0.9rem,24cqw)]">
             ♠♥
           </div>
         </div>
@@ -74,14 +74,14 @@ export function PlayingCard({ card, matched, pending, disabled, onClick, ariaLab
               theme?.fg,
             )}
           >
-            <span className="text-[clamp(0.75rem,13cqw,1rem)]">{card.rank}</span>
-            <span className="text-[clamp(0.65rem,11cqw,0.85rem)]">{glyph}</span>
+            <span className="text-[max(0.7rem,14cqw)]">{card.rank}</span>
+            <span className="text-[max(0.6rem,11cqw)]">{glyph}</span>
           </div>
 
           {/* Centered glyph */}
           <div
             className={cn(
-              "absolute inset-0 flex items-center justify-center select-none text-[clamp(1.4rem,26cqw,2rem)]",
+              "absolute inset-0 flex items-center justify-center select-none text-[max(1.2rem,36cqw)]",
               theme?.fg,
             )}
           >
@@ -95,8 +95,8 @@ export function PlayingCard({ card, matched, pending, disabled, onClick, ariaLab
               theme?.fg,
             )}
           >
-            <span className="text-[clamp(0.75rem,13cqw,1rem)]">{card.rank}</span>
-            <span className="text-[clamp(0.65rem,11cqw,0.85rem)]">{glyph}</span>
+            <span className="text-[max(0.7rem,14cqw)]">{card.rank}</span>
+            <span className="text-[max(0.6rem,11cqw)]">{glyph}</span>
           </div>
         </div>
       </div>
